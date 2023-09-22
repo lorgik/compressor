@@ -29,7 +29,7 @@ export default function Canvas({
     setUrlToDownload(
       canvasRef.current
         ? canvasRef.current.toDataURL(
-            imageType === 'image/png' ? imageType : 'image/jpeg',
+            imageType === 'image/jpeg' ? imageType : 'image/png',
             isQuality ? 0.7 : 1
           )
         : ''
