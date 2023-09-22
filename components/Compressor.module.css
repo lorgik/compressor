@@ -1,0 +1,105 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-width: 30vw;
+
+  padding: 30px;
+  border-radius: 40px;
+  background-color: #fff;
+  box-shadow: 0px 12px 25px 0px rgba(0, 0, 0, 0.12);
+}
+
+.uploadBox {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+
+  padding: 70px 25px;
+  border: 1.5px dashed #2c2c2c;
+  border-radius: 20px;
+}
+
+.uploadBox * {
+  user-select: none;
+}
+
+.icon {
+  width: 100px;
+  height: unset;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 1.125rem;
+}
+
+.column label {
+  font-weight: 500;
+}
+
+.column input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 7px;
+
+  font-size: 1.125rem;
+  font-weight: 500;
+  background-color: #f2f2f2;
+}
+
+.column input[type='checkbox'] {
+  width: unset;
+}
+
+.checkboxes {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.checkboxes .column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkboxes .column input {
+  margin-right: 10px;
+}
+
+.button {
+  font-weight: 500;
+  font-size: 1.25rem;
+
+  /* width: 100%; */
+  padding: 15px 50px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #f26210;
+  text-align: center;
+}
+
+canvas {
+  display: none;
+}
