@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+import styles from './Compressor.module.css'
+
 import UploadBox from './UploadBox'
 import SettingsBox from './SettingsBox'
-
-import styles from './Compressor.module.css'
 import Canvas from './Canvas'
-import Link from 'next/link'
 
 const iconUrl = 'https://cdn-icons-png.flaticon.com/512/685/685686.png'
 
@@ -19,6 +19,7 @@ export default function Compressor() {
   const [isDropped, setIsDropped] = useState(false)
   const [isRatio, setIsRatio] = useState(true)
   const [isQuality, setIsQuality] = useState(false)
+  const [imageType, setImageType] = useState('')
 
   const inputRef = useRef<HTMLInputElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
@@ -38,6 +39,7 @@ export default function Compressor() {
 
   function handleChange(e: any) {
     let file
+
     if (e.type === 'drop') {
       file = e.dataTransfer.files[0]
     } else {
@@ -47,13 +49,14 @@ export default function Compressor() {
         return
       }
     }
+
+    setImageType(file.type)
     setImageSrc(URL.createObjectURL(file))
   }
 
   function handleLoadingComplete(e: any) {
     setImageWidth(e.target.naturalWidth)
     setImageHeight(e.target.naturalHeight)
-
     setAspectRatio(e.target.naturalWidth / e.target.naturalHeight)
   }
 
@@ -120,6 +123,7 @@ export default function Compressor() {
             imageHeight={imageHeight}
             setUrlToDownload={setUrlToDownload}
             isQuality={isQuality}
+            imageType={imageType}
           />
 
           <Link

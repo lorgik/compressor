@@ -10,6 +10,7 @@ interface CanvasProps {
   imageSrc: string
   isQuality: boolean
   setUrlToDownload: any
+  imageType: string
 }
 
 export default function Canvas({
@@ -20,13 +21,17 @@ export default function Canvas({
   imageSrc,
   setUrlToDownload,
   isQuality,
+  imageType,
 }: CanvasProps) {
   function draw(ctx: any) {
     ctx.drawImage(imageRef.current, 0, 0, imageWidth, imageHeight)
 
     setUrlToDownload(
       canvasRef.current
-        ? canvasRef.current.toDataURL('image/jpeg', isQuality ? 0.7 : 1)
+        ? canvasRef.current.toDataURL(
+            imageType === 'image/png' ? imageType : 'image/jpeg',
+            isQuality ? 0.7 : 1
+          )
         : ''
     )
   }
@@ -38,6 +43,7 @@ export default function Canvas({
 
     const context = canvas.getContext('2d')
     draw(context)
+    console.log(imageType)
   }, [imageWidth, imageHeight, isQuality])
 
   return <canvas ref={canvasRef} />
